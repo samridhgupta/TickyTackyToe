@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "538508526551",
+    "firebase_url": "https://ticky-tacky-toe-cc58c.firebaseio.com",
+    "project_id": "ticky-tacky-toe-cc58c",
+    "storage_bucket": "ticky-tacky-toe-cc58c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538508526551:android:7990304116fcb4b6",
+        "android_client_info": {
+          "package_name": "com.samridhgupta.tickytackytoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538508526551-mbl1kor7uejsj8ir9cq1b3pcoonte1vt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samridhgupta.tickytackytoe",
+            "certificate_hash": "F3CCCE5B968312A664F6223D6130275C537AF7CE"
+          }
+        },
+        {
+          "client_id": "538508526551-mqhb8iemntijbju7ifh9sp0ajj512jnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIT0y4j0IlhldXpX1kmCW8n4VMKUXMkGo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
