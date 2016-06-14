@@ -8,11 +8,12 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -21,12 +22,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResolvingResultCallbacks;
 import com.google.android.gms.common.api.ResultCallbacks;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
@@ -36,10 +39,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     GoogleApiClient mGoogleApiClient;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN =9001;
+    Button b1, b2;
+    TextView gameText;
 
-    FirebaseApp app;
-    FirebaseDatabase database;
-    FirebaseAuth auth;
+    FirebaseDatabase gameDB;
+    DatabaseReference mRootRef;
+    DatabaseReference position;
+
+//    FirebaseApp app = FirebaseApp.getInstance();
+//    FirebaseDatabase GameDB = FirebaseDatabase.getInstance(app);
+//    DatabaseReference mGame1 = GameDB.getReference("game/game-1");
+//    DatabaseReference position = mGame1.child("position");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (!FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            Toast.makeText(getApplicationContext(), "not empty", Toast.LENGTH_SHORT).show();
+        }
+
+        gameDB = FirebaseDatabase.getInstance();
+        mRootRef = gameDB.getReference();
+        position = mRootRef.child("position");
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -62,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         signOutButton =(Button) findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(this);
 
+        b1 = (Button) findViewById(R.id.b1);
+        b2 = (Button) findViewById(R.id.b2);
+        gameText = (TextView) findViewById(R.id.gameText);
+        b1.setOnClickListener(this);
+        b2.setOnClickListener(this);
+
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +97,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                         .setAction("Action", null).show();
             }
         });
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-        app= FirebaseApp.getInstance();
-        database = FirebaseDatabase.getInstance(app);
+        position.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String text = dataSnapshot.getValue(String.class);
+                gameText.setText(text);
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        databaseRef = database.getReference("game");
-
-
+            }
+        });
 
     }
 
@@ -90,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 break;
             case R.id.signOutButton:
                 signOut();
+                break;
+            case R.id.b1:
+                position.setValue("xxxxxxxxx");
+
+                break;
+            case R.id.b2:
+                position.setValue("ooooooooo");
                 break;
         }
     }
@@ -118,11 +161,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onActivityResult(requestCode,resultCode,data);
 
         //Result returned from launching the Intent from GoogleSignInApi.getSignIn111Intent(data);
-
+/*
         if (resultCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
-        }
+        }*/
     }
 
 

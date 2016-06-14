@@ -9,24 +9,73 @@
     tools:context="com.samridhgupta.tickytackytoe.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id = "@+id/status_textview" />
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Out"
-            android:id="@+id/signOutButton"/>
-    </LinearLayout>
-    
+
+    <Button
+        android:text="X"
+        android:layout_width="91dp"
+        android:layout_height="0dp"
+        android:id="@+id/b1"
+        app:layout_constraintLeft_toLeftOf="@+id/content_main"
+        android:layout_marginStart="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/b2"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/b2"
+        tools:layout_constraintBottom_creator="1" />
+
+    <Button
+        android:text="0"
+        android:layout_width="91dp"
+        android:layout_height="51dp"
+        android:id="@+id/b2"
+        app:layout_constraintRight_toRightOf="@+id/content_main"
+        android:layout_marginEnd="16dp"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/content_main"
+        android:layout_marginBottom="16dp"
+        tools:layout_constraintBottom_creator="1" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="58dp"
+        android:layout_height="16dp"
+        android:id="@+id/gameText"
+        app:layout_constraintLeft_toLeftOf="@+id/content_main"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/b1"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/content_main"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/b1"
+        tools:layout_constraintBottom_creator="1" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:id="@+id/signOutButton"
+        app:layout_constraintLeft_toRightOf="@+id/sign_in_button"
+        android:layout_marginStart="40dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/sign_in_button"
+        tools:layout_constraintTop_creator="1" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="160dp"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:id="@+id/status_textview"
+        app:layout_constraintLeft_toRightOf="@+id/b1"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+        android:layout_marginBottom="32dp" />
+
 
 </android.support.constraint.ConstraintLayout>
