@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D2D2D2"
+    tools:context="com.samridhgupta.tickytackytoe.FragmentChallenge">
+
+
+    <Button
+        android:id="@+id/position1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="76dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/position2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/position1"
+        android:layout_alignBottom="@+id/position1"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/position1"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/position2"
+        android:layout_alignBottom="@+id/position2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/position1"
+        android:layout_below="@+id/position1"
+        android:layout_marginTop="28dp"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/position2"
+        android:layout_alignTop="@+id/position4"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/position5"
+        android:layout_alignEnd="@+id/position3"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/position4"
+        android:layout_centerVertical="true"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/position5"
+        android:layout_alignTop="@+id/position7"
+        android:text=" " />
+
+    <Button
+        android:id="@+id/position9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/position6"
+        android:layout_alignTop="@+id/position8"
+        android:text=" " />
+
+    <TextView
+        android:id="@+id/points_user2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/position2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="22dp"
+        android:text="User1 :" />
+
+    <ToggleButton
+        android:id="@+id/toggleDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/position9"
+        android:layout_below="@+id/position9"
+        android:layout_marginTop="39dp"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/toggleDone"
+        android:layout_alignStart="@+id/position7"
+        android:text="Timer" />
+
+    <TextView
+        android:id="@+id/points_user1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/points_user2"
+        android:layout_alignBottom="@+id/points_user2"
+        android:layout_alignEnd="@+id/position3"
+        android:text="User2 :" />
+
+    <TextView
+        android:id="@+id/timertext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignEnd="@+id/position7"
+        android:layout_marginEnd="14dp" />
+
+</RelativeLayout>

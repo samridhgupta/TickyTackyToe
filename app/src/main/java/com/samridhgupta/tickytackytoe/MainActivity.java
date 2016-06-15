@@ -33,12 +33,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
+    private static final String TAG = "SignInActivity";
+    private static final int RC_SIGN_IN = 9001;
     SignInButton signInButton;
     Button signOutButton;
     TextView statusTextView;
     GoogleApiClient mGoogleApiClient;
-    private static final String TAG = "SignInActivity";
-    private static final int RC_SIGN_IN =9001;
     Button b1, b2;
     TextView gameText;
 
@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 signIn();
                 break;
             case R.id.signOutButton:
+                Intent i = new Intent(getApplicationContext(), GameActivity.class);
+                startActivity(i);
                 signOut();
                 break;
             case R.id.b1:
