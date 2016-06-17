@@ -118,6 +118,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+    public void box1(View v) {
+        Toast.makeText(getApplicationContext(), "heeeeyyyy", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -131,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 break;
             case R.id.b1:
                 position.setValue("xxxxxxxxx");
+
 
                 break;
             case R.id.b2:

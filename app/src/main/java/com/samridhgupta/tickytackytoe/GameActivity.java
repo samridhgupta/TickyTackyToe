@@ -131,9 +131,26 @@ public class GameActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+
+            switch (position) {
+
+                case 1:
+                    return new FragmentChallenge();
+                case 2:
+                    return new FragmentChallenge();
+                case 3:
+                    return new FragmentChallenge();
+                case 4:
+                    return new FragmentGameResult();
+                default:
+
+                    return PlaceholderFragment.newInstance(position + 1);
+            }
+
+
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
         }
 
         @Override
@@ -146,15 +163,15 @@ public class GameActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "MAIN";
                 case 1:
-                    return "SECTION 2";
+                    return "CHALLENGE #1";
                 case 2:
-                    return "SECTION 3";
+                    return "CHALLENGE #2";
                 case 3:
-                    return "SECTION 4";
+                    return "CHALLENGE #3";
                 case 4:
-                    return "SECTION 5";
+                    return "RESULT";
             }
             return null;
         }

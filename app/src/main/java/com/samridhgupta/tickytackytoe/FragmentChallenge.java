@@ -1,76 +1,39 @@
 package com.samridhgupta.tickytackytoe;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentChallenge.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentChallenge#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class FragmentChallenge extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
 
     Button P1, P2, P3, P4, P5, P6, P7, P8, P9;
     ToggleButton DoneToggle;
     TextView Points_User1, Points_User2;
     TextView TimerText;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    int p1 = 0, p2 = 0, p3 = 0, p4 = 0, p5 = 0, p6 = 0, p7 = 0, p8 = 0, p9 = 0;
 
     public FragmentChallenge() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentChallenge.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentChallenge newInstance(String param1, String param2) {
-        FragmentChallenge fragment = new FragmentChallenge();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_challenge, container, false);
         // Inflate the layout for this fragment
         P1 = (Button) rootview.findViewById(R.id.position1);
@@ -82,85 +45,217 @@ public class FragmentChallenge extends Fragment {
         P7 = (Button) rootview.findViewById(R.id.position7);
         P8 = (Button) rootview.findViewById(R.id.position8);
         P9 = (Button) rootview.findViewById(R.id.position9);
+
         DoneToggle = (ToggleButton) rootview.findViewById(R.id.toggleDone);
+
         Points_User1 = (TextView) rootview.findViewById(R.id.points_user1);
         Points_User2 = (TextView) rootview.findViewById(R.id.points_user2);
+
         TimerText = (TextView) rootview.findViewById(R.id.timertext);
 
+        int p1 = 0, p2 = 0, p3 = 0, p4 = 0, p5 = 0, p6 = 0, p7 = 0, p8 = 0, p9 = 0;
+        DoneToggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (DoneToggle.isChecked()) {
+                    sendChallengeString();
+                    disable();
+                } else {
+                    plotChallengeString("Samridh___");
+                    enable();
+                }
+            }
+        });
 
         P1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                position(v);
+                boxClick(v);
+            }
+        });
+        P2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
+            }
+        });
+        P9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boxClick(v);
             }
         });
 
 
         return rootview;
-
     }
 
-    public void position(View v) {
+    public void boxClick(View v) {
         switch (v.getId()) {
             case R.id.position1:
-                if ()
-                    P1.setText("X");
-                P1.setText("0");
-                P1.setText(" ");
+                p1++;
+                P1.setText(check(p1));
                 break;
-
             case R.id.position2:
-            case R.id.position3:
-            case R.id.position4:
-            case R.id.position5:
-            case R.id.position6:
-            case R.id.position7:
-            case R.id.position8:
-            case R.id.position9:
-
-
+                p2++;
+                P2.setText(check(p2));
                 break;
-
+            case R.id.position3:
+                p3++;
+                P3.setText(check(p3));
+                break;
+            case R.id.position4:
+                p4++;
+                P4.setText(check(p4));
+                break;
+            case R.id.position5:
+                p5++;
+                P5.setText(check(p5));
+                break;
+            case R.id.position6:
+                p6++;
+                P6.setText(check(p6));
+                break;
+            case R.id.position7:
+                p7++;
+                P7.setText(check(p7));
+                break;
+            case R.id.position8:
+                p8++;
+                P8.setText(check(p8));
+                break;
+            case R.id.position9:
+                p9++;
+                P9.setText(check(p9));
+                break;
         }
     }
 
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    public String check(int p) {
+        int x = p % 3;
+        String S = " ";
+        switch (x) {
+            case 0:
+                S = "_";
+                break;
+            case 1:
+                S = "X";
+                break;
+            case 2:
+                S = "Y";
+                break;
         }
+        return S;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
+    public void timer() {
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                TimerText.setText("seconds remaining: " + millisUntilFinished / 1000 + " sec");
+                //here you can have your logic to set text to edittext
+            }
+
+            public void onFinish() {
+                TimerText.setText("seconds remaining: 0 sec");
+
+                DoneToggle.setChecked(true);
+            }
+
+        }.start();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void enable() {
+        P1.setEnabled(true);
+        P2.setEnabled(true);
+        P3.setEnabled(true);
+        P4.setEnabled(true);
+        P5.setEnabled(true);
+        P6.setEnabled(true);
+        P7.setEnabled(true);
+        P8.setEnabled(true);
+        P9.setEnabled(true);
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    public void disable() {
+        P1.setEnabled(false);
+        P2.setEnabled(false);
+        P3.setEnabled(false);
+        P4.setEnabled(false);
+        P5.setEnabled(false);
+        P6.setEnabled(false);
+        P7.setEnabled(false);
+        P8.setEnabled(false);
+        P9.setEnabled(false);
     }
+
+    public void plotChallengeString(String s) {
+        //Hits when DataChanged
+        //divde the string and plot
+        s = s.toUpperCase();
+
+        P1.setText(s.charAt(0) + "");
+        P2.setText(s.charAt(1) + "");
+        P3.setText(s.charAt(2) + "");
+        P4.setText(s.charAt(3) + "");
+        P5.setText(s.charAt(4) + "");
+        P6.setText(s.charAt(5) + "");
+        P7.setText(s.charAt(6) + "");
+        P8.setText(s.charAt(7) + "");
+        P9.setText(s.charAt(8) + "");
+    }
+
+    public String sendChallengeString() {
+        //get value of all buttons
+        //combine and send
+        String s = ((P1.getText().toString()) + "" +
+                (P2.getText().toString()) + "" +
+                (P3.getText().toString()) + "" +
+                (P4.getText().toString()) + "" +
+                (P5.getText().toString()) + "" +
+                (P6.getText().toString()) + "" +
+                (P7.getText().toString()) + "" +
+                (P8.getText().toString()) + "" +
+                (P9.getText().toString()));
+        Toast.makeText(getActivity(), s.toUpperCase(), Toast.LENGTH_LONG).show();
+        return s;
+    }
+
+
 }
